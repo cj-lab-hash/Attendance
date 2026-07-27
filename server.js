@@ -10,6 +10,10 @@ app.use(express.json());
 const COOKIE_FILE = path.join(__dirname, '.chrono_cookie');
 const PLAYWRIGHT_PROFILE_DIR = path.join(__dirname, '.chrono_profile');
 
+function isHeadlessRenderEnvironment() {
+  return process.env.RENDER === 'true' || process.env.PLAYWRIGHT_HEADLESS === 'true' || process.env.CI === 'true';
+}
+
 function loadCookieString() {
   if (fs.existsSync(COOKIE_FILE)) {
     return fs.readFileSync(COOKIE_FILE, 'utf8').trim();
@@ -73,7 +77,7 @@ app.get('/auth-status', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless: false,
+      headless: isHeadlessRenderEnvironment(),
       viewport: null,
       args: ['--start-maximized'],
     });
@@ -147,7 +151,7 @@ function hasPersistentProfile() {
 async function createChronoContext({ headless = true } = {}) {
   if (hasPersistentProfile()) {
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless,
+      headless: isHeadlessRenderEnvironment() ? true : headless,
       viewport: null,
       args: ['--start-maximized'],
     });
