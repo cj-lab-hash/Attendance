@@ -41,8 +41,13 @@
     <button id="checkAll">Check All</button>
     <button id="addRow">Add Row</button>
     <button id="loginButton">Login to ChronoTrack</button>
+    <div class="cookie-entry">
+      <textarea id="cookieInput" rows="3" placeholder="Paste ChronoTrack cookie here"></textarea>
+      <button id="saveCookie">Save Cookie</button>
+      <div id="cookieMessage" class="cookie-message"></div>
+    </div>
     <div id="authStatus" class="auth-status">Checking auth status...</div>
-    <small>Note: Use Login if this is the first run or if authentication expires.</small>
+    <small>Note: Use Login on your local machine. On Render, paste your ChronoTrack cookie here and refresh it when it expires.</small>
   </div>
 
   <script>
@@ -295,10 +300,25 @@
         const json = await res.json();
         const source = json.hasProfile ? 'profile' : json.hasCookie ? 'cookie' : 'none';
         statusEl.textContent = `Auth source: ${source} | profile=${json.hasProfile} | cookie=${json.hasCookie}`;
+        updateLoginButton(json);
         return json;
       } catch (err) {
         statusEl.textContent = 'Auth status unavailable';
         return null;
+      }
+    }
+
+    function updateLoginButton(authStatus) {
+      const loginButton = document.getElementById('loginButton');
+      const cookieMessage = document.getElementById('cookieMessage');
+      if (authStatus && authStatus.isRender) {
+        loginButton.disabled = true;
+        loginButton.textContent = 'Login not available on Render';
+        cookieMessage.textContent = 'Paste your ChronoTrack cookie above to authenticate.';
+      } else {
+        loginButton.disabled = false;
+        loginButton.textContent = 'Login to ChronoTrack';
+        cookieMessage.textContent = '';
       }
     }
 
@@ -334,6 +354,32 @@
         statusEl.textContent = 'Login complete. Auth profile is ready.';
       } else {
         statusEl.textContent = 'Login not detected yet. Refresh auth status after closing the browser.';
+      }
+    }
+
+    async function saveCookie() {
+      const cookieInput = document.getElementById('cookieInput');
+      const cookieMessage = document.getElementById('cookieMessage');
+      const cookieValue = cookieInput.value.trim();
+      if (!cookieValue) {
+        cookieMessage.textContent = 'Paste your ChronoTrack cookie string first.';
+        return;
+      }
+      try {
+        const response = await fetch('/cookie', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cookie: cookieValue }),
+        });
+        const json = await response.json();
+        if (json.saved) {
+          cookieMessage.textContent = 'Cookie saved successfully. Refresh auth status.';
+          await refreshAuthStatus();
+        } else {
+          cookieMessage.textContent = json.error || 'Failed to save cookie.';
+        }
+      } catch (err) {
+        cookieMessage.textContent = 'Error saving cookie: ' + err.message;
       }
     }
 
@@ -415,6 +461,7 @@
     });
     document.getElementById('addRow').addEventListener('click', addCustomRow);
     document.getElementById('loginButton').addEventListener('click', startLogin);
+    document.getElementById('saveCookie').addEventListener('click', saveCookie);
     formatTitle();
     renderRoster();
     refreshAuthStatus();

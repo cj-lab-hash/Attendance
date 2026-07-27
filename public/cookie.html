@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ChronoTrack Cookie Setup</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>ChronoTrack Cookie Setup</h1>
+  <p>Render cannot open a browser for interactive login. Paste your ChronoTrack cookie string below:</p>
+  <textarea id="cookieInput" rows="6" cols="80" placeholder="PHPSESSID=...; other=..."></textarea>
+  <button id="saveCookie">Save Cookie</button>
+  <div id="message"></div>
+  <script>
+    document.getElementById('saveCookie').addEventListener('click', async () => {
+      const cookie = document.getElementById('cookieInput').value.trim();
+      const message = document.getElementById('message');
+      if (!cookie) {
+        message.textContent = 'Enter a cookie string first.';
+        return;
+      }
+      const res = await fetch('/cookie', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cookie }),
+      });
+      const json = await res.json();
+      if (json.saved) {
+        message.textContent = 'Cookie saved successfully.';
+      } else {
+        message.textContent = json.error || 'Failed to save cookie.';
+      }
+    });
+  </script>
+</body>
+</html>

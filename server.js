@@ -68,20 +68,26 @@ app.get('/auth-status', (req, res) => {
     hasProfile: hasPersistentProfile(),
     hasCookie: !!chronoCookie,
     authSource: hasPersistentProfile() ? 'profile' : chronoCookie ? 'cookie' : null,
+    isRender,
   });
 });
 
 app.post('/login', async (req, res) => {
+  if (isRender) {
+    return res.json({
+      started: false,
+      error: 'Browser login is not available on Render. Paste your ChronoTrack cookie into the app and save it instead.',
+    });
+  }
+
   try {
-    const headless = isRender ? true : false;
+    const headless = false;
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, getPlaywrightLaunchOptions({ headless }));
     const page = await context.newPage();
     await page.goto(CHRONO_SEARCH_URL, { waitUntil: 'networkidle' });
     res.json({
       started: true,
-      message: headless
-        ? 'Browser launched in headless mode for Render. Use CHRONO_COOKIE for unattended runs.'
-        : 'Browser opened. Please log in and close the browser when finished.',
+      message: 'Browser opened. Please log in and close the browser when finished.',
     });
   } catch (err) {
     res.status(500).json({ error: String(err) });
