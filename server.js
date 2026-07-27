@@ -1,7 +1,19 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('playwright');
+// Playwright is optional in production builds. Lazily require it so deploys
+// that don't install devDependencies (e.g. Render) won't fail at startup.
+let _chromium_cached;
+function getChromium() {
+  if (_chromium_cached !== undefined) return _chromium_cached;
+  try {
+    const pw = require('playwright');
+    _chromium_cached = pw.chromium;
+  } catch (e) {
+    _chromium_cached = null;
+  }
+  return _chromium_cached;
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -76,6 +88,13 @@ app.get('/auth-status', (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
+    const chromium = getChromium();
+    if (!chromium) {
+      return res.status(503).json({
+        error: 'Playwright is not installed. Run `npm run build` locally to install browsers, or install Playwright to use the login flow.'
+      });
+    }
+
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
       headless: isHeadlessRenderEnvironment(),
       viewport: null,
@@ -149,7 +168,12 @@ function hasPersistentProfile() {
 }
 
 async function createChronoContext({ headless = true } = {}) {
+  const chromium = getChromium();
+
   if (hasPersistentProfile()) {
+    if (!chromium) {
+      return { context: null, source: null };
+    }
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
       headless: isHeadlessRenderEnvironment() ? true : headless,
       viewport: null,
@@ -174,6 +198,13 @@ async function createChronoContext({ headless = true } = {}) {
       secure: false,
     };
   });
+
+  if (!chromium) {
+    // Playwright not available in this environment (likely a production build
+    // where devDependencies aren't installed). Return null context so caller
+    // can fall back or surface an informative message.
+    return { browser: null, context: null, source: null };
+  }
 
   const browser = await chromium.launch({ headless });
   const context = await browser.newContext();

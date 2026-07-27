@@ -1,7 +1,72 @@
-[0727/170150.553:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
-[0727/170150.553:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
-[0727/170150.553:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
-[0727/170150.831:INFO:CONSOLE:10] "Uncaught TypeError: Cannot read properties of undefined (reading 'msie')", source: http://lighthouse2.maxim-ic.com/chrono/misc/tableheader.js?6 (10)
-[0727/170151.661:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
-[0727/170151.661:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
-[0727/170151.661:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190901.919:WARNING:content\browser\btm\btm_database.cc:128] Failed to initialize the DIPS SQLite database.
+[0727/190901.922:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190901.923:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190901.923:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190901.929:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190901.929:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190901.929:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190901.930:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190901.930:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190901.930:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190902.019:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190902.019:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190902.019:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190902.028:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190902.028:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190902.028:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190902.028:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190902.028:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190902.028:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190903.809:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190903.810:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190903.810:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190903.941:WARNING:components\leveldb_proto\internal\leveldb_database.cc:102] Unable to open C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata: IO error: C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata/LOCK: Access denied. (ChromeMethodBFE: 15::LockFile::5)
+[0727/190905.959:WARNING:components\leveldb_proto\internal\leveldb_database.cc:102] Unable to open C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata: IO error: C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata/LOCK: Access denied. (ChromeMethodBFE: 15::LockFile::5)
+[0727/190907.970:WARNING:components\leveldb_proto\internal\leveldb_database.cc:102] Unable to open C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata: IO error: C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata/LOCK: Access denied. (ChromeMethodBFE: 15::LockFile::5)
+[0727/190909.985:WARNING:components\leveldb_proto\internal\leveldb_database.cc:102] Unable to open C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata: IO error: C:\Users\TEMP\Desktop\Attendance\Attendance\.chrono_profile\Default\shared_proto_db\metadata/LOCK: Access denied. (ChromeMethodBFE: 15::LockFile::5)
+[0727/190911.240:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190911.240:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190911.241:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190911.525:INFO:CONSOLE:10] "Uncaught TypeError: Cannot read properties of undefined (reading 'msie')", source: http://lighthouse2.maxim-ic.com/chrono/misc/tableheader.js?6 (10)
+[0727/190912.675:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190912.676:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190912.676:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190913.138:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190913.138:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190913.138:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190913.228:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190913.229:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190913.229:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190922.696:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190922.696:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190922.696:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190922.984:INFO:CONSOLE:10] "Uncaught TypeError: Cannot read properties of undefined (reading 'msie')", source: http://lighthouse2.maxim-ic.com/chrono/misc/tableheader.js?6 (10)
+[0727/190924.139:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190924.139:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190924.139:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190924.801:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190924.801:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190924.801:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190924.880:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190924.880:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190924.880:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190933.958:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190933.958:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190933.959:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190934.234:INFO:CONSOLE:10] "Uncaught TypeError: Cannot read properties of undefined (reading 'msie')", source: http://lighthouse2.maxim-ic.com/chrono/misc/tableheader.js?6 (10)
+[0727/190935.199:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/190935.201:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/190935.201:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/190936.044:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190936.044:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190936.045:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190936.178:WARNING:content\browser\btm\btm_database.cc:128] Failed to initialize the DIPS SQLite database.
+[0727/190936.178:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190936.178:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190936.178:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190936.187:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190936.187:ERROR:net\disk_cache\cache_util_win.cc:25] Unable to move the cache: Access is denied. (0x5)
+[0727/190936.187:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190936.187:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
+[0727/190936.187:ERROR:net\disk_cache\disk_cache.cc:284] Unable to create cache
+[0727/190936.187:ERROR:gpu\ipc\host\gpu_disk_cache.cc:737] Gpu Cache Creation failed: -2
