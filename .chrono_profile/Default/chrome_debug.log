@@ -1,0 +1,7 @@
+[0727/170150.553:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/170150.553:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/170150.553:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)
+[0727/170150.831:INFO:CONSOLE:10] "Uncaught TypeError: Cannot read properties of undefined (reading 'msie')", source: http://lighthouse2.maxim-ic.com/chrono/misc/tableheader.js?6 (10)
+[0727/170151.661:INFO:CONSOLE:6] "Uncaught TypeError: e.isPlainObject is not a function", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6 (6)
+[0727/170151.661:INFO:CONSOLE:21] "JQMIGRATE: Logging is active", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (21)
+[0727/170151.661:INFO:CONSOLE:85] "Uncaught TypeError: Cannot read properties of undefined (reading 'value')", source: http://lighthouse2.maxim-ic.com/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6 (85)

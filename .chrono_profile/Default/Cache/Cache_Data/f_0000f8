@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/chrono/sites/default/files/basic2_favicon.ico" type="image/x-icon" />
+        <title>ChronoTrack Search | ChronoTrack Reports</title>
+        <link type="text/css" rel="stylesheet" media="all" href="/chrono/modules/node/node.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/modules/system/defaults.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/modules/system/system.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/modules/system/system-menus.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/modules/user/user.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/contrib/date/date.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/libraries/jquery.ui/themes/base/jquery-ui.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/contrib/date/date_popup/themes/jquery.timeentry.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/libraries/superfish/css/superfish.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/libraries/superfish/css/superfish-vertical.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/libraries/superfish/css/superfish-navbar.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/mxreports/rt/chrono_rpt/chrono_rpt.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/custom/chrotrack/css/table.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/modules/custom/chrotrack/css/chrotrack.search.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.css?6" />
+<link type="text/css" rel="stylesheet" media="all" href="/chrono/sites/all/themes/custom/basic2/css/style.css?6" />
+        <script type="text/javascript" src="/chrono/sites/all/modules/contrib/jquery_update/replace/jquery.min.js?6"></script>
+<script type="text/javascript" src="/chrono/misc/drupal.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/themes/custom/basic2/jquery-ui/jquery-ui-1.9.2.custom.min.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/themes/custom/basic2/js/jquery.migrate.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/modules/contrib/poormanscron/poormanscron.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/jquery.hoverIntent.minified.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/jquery.bgiframe.min.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/superfish.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/supersubs.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/supposition.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/libraries/superfish/sftouchscreen.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/modules/custom/chrotrack/js/jquery-1.9.1.js?6"></script>
+<script type="text/javascript" src="/chrono/sites/all/modules/custom/chrotrack/js/jquery-ui.js?6"></script>
+<script type="text/javascript" src="/chrono/misc/tableheader.js?6"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/chrono/", "cron": { "basePath": "/chrono/?q=poormanscron", "runNext": 1785145710 } });
+//--><!]]>
+</script>
+        <script type="text/javascript"></script>
+    </head>
+
+    <body>
+        <table border="0" cellpadding="0" cellspacing="0" id="header" style="border-collapse: inherit; border: none; padding: 1px;">
+            <tr class="logo-menu">
+                <td id="logo">
+                    <a href="/chrono/" title="Home"><img src="/chrono/sites/default/files/adi-logo-blue.png" alt="Home" /></a>                    <h1 class='site-name'><a href="/chrono/" title="Home">ChronoTrack Reports</a></h1>                                    </td>
+                <td id="menu">
+                                        <ul class="links" id="navlist"><li class="menu-298 first"><a href="/chrono/?q=rpt/chrono_in" title="List of employees with active/current Chronotrack/Turnstile &quot;IN&quot; of the current date or no time out.">Chrono / Turnstile IN Reports</a></li>
+<li class="menu-297"><a href="/chrono/?q=rpt/chrono_out" title="List of employees who are out of the production floor or have open transactions.">Chrono OUT Reports</a></li>
+<li class="menu-617"><a href="http://lighthouse2.maxim-ic.com/chrono/?q=full/chrotrack/search/logs/mpoc/index" title="">ChronoTrack Search</a></li>
+<li class="menu-619 last"><a href="/chrono/?q=rpt/esd_result" title="">ESD Reports</a></li>
+</ul>                                    </td>
+            </tr>
+            <tr style="background-color: #eeeeee; border: none;" >
+                <td colspan="2" height="20"  class="rounded"><div style="margin-left:180px"></div></td>
+            </tr>
+        </table>
+
+        <table border="0" cellpadding="0" cellspacing="0" id="content" style="border-collapse: inherit; border: none; padding: 1px;">
+            <tr>
+                                <td valign="top" width="100%">
+                                        <div id="main">
+
+                        <h1 class="title">ChronoTrack Search</h1>
+                        <div class="tabs"></div>
+                                                                                                <div id="chrotrack-search-logs" class="table-wrapper"><div class="chrotrack form-wrapper"><form action="/chrono/?q=full/chrotrack/search/logs/mpoc/index&amp;idnum=2012370&amp;frdate=2026-07-27&amp;todate=2026-07-27"  accept-charset="UTF-8" method="post" id="chrotrack-search-logs-form">
+<div><table class="pure-form pure-form-stacked"><LEGEND> <strong>Filter Option : </strong> </legend>
+                <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-3"><td><div class="container-inline" title="Employee ID number"><strong style="display: block; padding: 0px; margin: 0px;">ID Number: </strong> <div class="form-item" id="edit-idnum-wrapper">
+ <input type="text" maxlength="8" name="idnum" id="edit-idnum" size="8" value="2012370" class="form-text" />
+</div>
+</div></td></div><td><div class="container-inline" title="Employee last name"><strong style="display: block; padding: 0px; margin: 0px;">Last name: </strong> <div class="form-item" id="edit-lname-wrapper">
+ <input type="text" maxlength="128" name="lname" id="edit-lname" size="15" value="" class="form-text" />
+</div>
+</div></td><td><div class="container-inline" title="Employee first name"><strong style="display: block; padding: 0px; margin: 0px;">First name: </strong> <div class="form-item" id="edit-fname-wrapper">
+ <input type="text" maxlength="128" name="fname" id="edit-fname" size="15" value="" class="form-text" />
+</div>
+</div></td><td><div class="container-inline" title="Transaction type"><strong style="display: block; padding: 0px; margin: 0px;">Trans Type: </strong> <div class="form-item" id="edit-transtype-wrapper">
+ <select name="transtype" class="form-select" id="edit-transtype" ><option value="" selected="selected">ALL</option><option value="BREAKTIME MEAL">BREAKTIME MEAL</option><option value="BREAKTIME SNACK">BREAKTIME SNACK</option><option value="REST ROOM">REST ROOM</option><option value="TIME INOUT">TIME INOUT</option><option value="WORK RELATED">WORK RELATED</option><option value="TOWNHALL">TOWNHALL</option><option value="CLINIC">CLINIC</option><option value="HR">HR</option><option value="PROJECT">PROJECT</option><option value="DIALOGUE">DIALOGUE</option><option value="IRREGULAR TRANSACTION">IRREGULAR TRANSACTION</option><option value="MAXIM COOP">MAXIM COOP</option><option value="LOCKER">LOCKER</option><option value="CHANGE AREA">CHANGE AREA</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Supervisor"><strong style="display: block; padding: 0px; margin: 0px;">Supervisor: </strong> <div class="form-item" id="edit-supervisor-wrapper">
+ <select name="supervisor" class="form-select" id="edit-supervisor" ><option value="" selected="selected">ALL</option><option value="ABELLA, MARVIN">ABELLA, MARVIN</option><option value="ACASIO, VICTORIA">ACASIO, VICTORIA</option><option value="AGLERON, RONALD ALLAN">AGLERON, RONALD ALLAN</option><option value="AGUSTIN, REY">AGUSTIN, REY</option><option value="ALIJAN, AILEENE">ALIJAN, AILEENE</option><option value="ALIMO-OT, RITCHE">ALIMO-OT, RITCHE</option><option value="ALLEN, BRUCE">ALLEN, BRUCE</option><option value="ALMOETE, RAMON">ALMOETE, RAMON</option><option value="AMURAO, JANE">AMURAO, JANE</option><option value="AMURAO, RANDY">AMURAO, RANDY</option><option value="ARLENE VILLALUZ">ARLENE VILLALUZ</option><option value="BAGANG, GEORGE">BAGANG, GEORGE</option><option value="BALDOZA, LEILANI">BALDOZA, LEILANI</option><option value="BALINADO, MAXIMA">BALINADO, MAXIMA</option><option value="BALOR, BELINDA">BALOR, BELINDA</option><option value="BATUNGBAKAL, REX">BATUNGBAKAL, REX</option><option value="BAYAN, REYNILDA">BAYAN, REYNILDA</option><option value="BAYRON, REYNALDO">BAYRON, REYNALDO</option><option value="BECHAYDA, RODEL">BECHAYDA, RODEL</option><option value="BERGADO, CHARISMA">BERGADO, CHARISMA</option><option value="BOADO, RONALD">BOADO, RONALD</option><option value="CAMANTIGUE, LHENON">CAMANTIGUE, LHENON</option><option value="CAMIRO, RONIE">CAMIRO, RONIE</option><option value="CANTAVIEJA, ROMALI MAE">CANTAVIEJA, ROMALI MAE</option><option value="CAPUA, ROBERTO">CAPUA, ROBERTO</option><option value="CARGULLO, ARNEL">CARGULLO, ARNEL</option><option value="CARISMA, JOVELLE">CARISMA, JOVELLE</option><option value="CARLO, TICMAN">CARLO, TICMAN</option><option value="CARMONA, ARLEEN">CARMONA, ARLEEN</option><option value="CORTEZ, JEBSEN">CORTEZ, JEBSEN</option><option value="CUARESMA, VICENTE OSCAR JR.">CUARESMA, VICENTE OSCAR JR.</option><option value="CUASAY, MARIANITO JR">CUASAY, MARIANITO JR</option><option value="CUNANAN, MARK DAIROM">CUNANAN, MARK DAIROM</option><option value="DE LA RAMA, MARLON">DE LA RAMA, MARLON</option><option value="DECAL, ERWIN">DECAL, ERWIN</option><option value="DEL PRADO, ROMEL">DEL PRADO, ROMEL</option><option value="DELA REA, ARTHUR">DELA REA, ARTHUR</option><option value="DUENAS, GILBERT">DUENAS, GILBERT</option><option value="DUMLAO, FLORDELIZA">DUMLAO, FLORDELIZA</option><option value="EDMUND SABIO">EDMUND SABIO</option><option value="EGUIA, DAVID">EGUIA, DAVID</option><option value="EVELYN OBLEPIAS">EVELYN OBLEPIAS</option><option value="FAILANO, EFREN">FAILANO, EFREN</option><option value="FERNANDEZ, RICHARD">FERNANDEZ, RICHARD</option><option value="FLORES, WILSON">FLORES, WILSON</option><option value="FORONDA, RAYMUND">FORONDA, RAYMUND</option><option value="FREDERICK PANO">FREDERICK PANO</option><option value="GAN, MELANI">GAN, MELANI</option><option value="GATCHALIAN, REINHARDT">GATCHALIAN, REINHARDT</option><option value="GAWAT, DINALYN">GAWAT, DINALYN</option><option value="GINA REALUBIT">GINA REALUBIT</option><option value="GONZALES, CARY">GONZALES, CARY</option><option value="GONZALES, REYNALDO JR.">GONZALES, REYNALDO JR.</option><option value="HAIG, WILMA">HAIG, WILMA</option><option value="IGNACIO, JOJO">IGNACIO, JOJO</option><option value="JACALA, HILARIO">JACALA, HILARIO</option><option value="JAMON, MARK GIL">JAMON, MARK GIL</option><option value="JANE AMURAO">JANE AMURAO</option><option value="JIMENEZ, JASMIN MAY">JIMENEZ, JASMIN MAY</option><option value="JULIE PAZ">JULIE PAZ</option><option value="KRISTINA MACABUHAY">KRISTINA MACABUHAY</option><option value="LABAY, MARIELOU">LABAY, MARIELOU</option><option value="LAYOG, SUSANA">LAYOG, SUSANA</option><option value="LEILANI BALDOZA">LEILANI BALDOZA</option><option value="LIVELO, EVANGELIN">LIVELO, EVANGELIN</option><option value="LLEGO, CHARRYLON">LLEGO, CHARRYLON</option><option value="MAGBANUA, DIANA">MAGBANUA, DIANA</option><option value="MAISOG, RENIE">MAISOG, RENIE</option><option value="MAMON, JOE ARTHUR">MAMON, JOE ARTHUR</option><option value="MAMON, NENITA">MAMON, NENITA</option><option value="MANALO, ALLAN">MANALO, ALLAN</option><option value="MARATAS, LORDGEN">MARATAS, LORDGEN</option><option value="MARICEL PERIDO">MARICEL PERIDO</option><option value="MEDRANO, JAY PAUL">MEDRANO, JAY PAUL</option><option value="MONCADA, HERMES">MONCADA, HERMES</option><option value="NICHOLS, JOHN">NICHOLS, JOHN</option><option value="NUESTRO, JOCELYN">NUESTRO, JOCELYN</option><option value="OBLEPIAS, EVELYN">OBLEPIAS, EVELYN</option><option value="OFFEMARIA, MITZI">OFFEMARIA, MITZI</option><option value="ONTIVEROS JR, LEONARDO">ONTIVEROS JR, LEONARDO</option><option value="PADRIQUE, JEFF">PADRIQUE, JEFF</option><option value="PAGTABUNAN, REY">PAGTABUNAN, REY</option><option value="PAKINGAN, EDUARDO">PAKINGAN, EDUARDO</option><option value="PAKINGAN, RICARDO">PAKINGAN, RICARDO</option><option value="PALOMO, KENNETH">PALOMO, KENNETH</option><option value="PANGASINAN, ANGELO">PANGASINAN, ANGELO</option><option value="PANO, FREDERICK">PANO, FREDERICK</option><option value="PERIDO, MARICEL">PERIDO, MARICEL</option><option value="PERLADO, WILLIAM">PERLADO, WILLIAM</option><option value="PUNZALAN, BRIAN JAMES">PUNZALAN, BRIAN JAMES</option><option value="QUEBEC, MATEO JR.">QUEBEC, MATEO JR.</option><option value="RAMIREZ, MARCONI">RAMIREZ, MARCONI</option><option value="REALUBIT, GINA">REALUBIT, GINA</option><option value="REGACHO, CHRIS">REGACHO, CHRIS</option><option value="REYES, HERNELIO">REYES, HERNELIO</option><option value="REYES, IREEN">REYES, IREEN</option><option value="REYNALDO GONAZALES JR.">REYNALDO GONAZALES JR.</option><option value="REYNILDA BAYAN">REYNILDA BAYAN</option><option value="ROLE, ANGELA">ROLE, ANGELA</option><option value="RUEDAS, RAMIR">RUEDAS, RAMIR</option><option value="SABACAJAN, EVELYN">SABACAJAN, EVELYN</option><option value="SABIO, EDMUND">SABIO, EDMUND</option><option value="SADIA, SHEERINA">SADIA, SHEERINA</option><option value="SALAZAR, CATHERINE">SALAZAR, CATHERINE</option><option value="SALVADOR, RICO">SALVADOR, RICO</option><option value="SAQUING, CATHERINE">SAQUING, CATHERINE</option><option value="SATO, MANOLITO">SATO, MANOLITO</option><option value="SORITA, MAURICE">SORITA, MAURICE</option><option value="TABLANDO, ROSALIE">TABLANDO, ROSALIE</option><option value="TABOR, CAMILLE">TABOR, CAMILLE</option><option value="TAGANAS, NINO">TAGANAS, NINO</option><option value="TAGANILE, GREMAR">TAGANILE, GREMAR</option><option value="TAKAHAN, MOHAMAD">TAKAHAN, MOHAMAD</option><option value="TARROZA, GILBERT">TARROZA, GILBERT</option><option value="TEVES, RHODELINE ">TEVES, RHODELINE </option><option value="TIROL, SANDRA">TIROL, SANDRA</option><option value="TRINIDAD, MELITON">TRINIDAD, MELITON</option><option value="TROCIO, MARIA LOCHINIE">TROCIO, MARIA LOCHINIE</option><option value="TUMBAGA, HERSIE">TUMBAGA, HERSIE</option><option value="TUPAS, KARL">TUPAS, KARL</option><option value="VELASCO, FRANKLEE">VELASCO, FRANKLEE</option><option value="VICTORIA ACASIO">VICTORIA ACASIO</option><option value="VILLALUZ, ARLENE">VILLALUZ, ARLENE</option><option value="VILLARAN, MICHAEL">VILLARAN, MICHAEL</option><option value="YANG, JEROLD">YANG, JEROLD</option><option value="YLAGAN JR, ADOLFO">YLAGAN JR, ADOLFO</option></select>
+</div>
+</div></td></tr><tr class="row-2-wrapper"><td><div class="container-inline" title="Shift schedule"><strong style="display: block; padding: 0px; margin: 0px;">Shift: </strong> <div class="form-item" id="edit-shift-wrapper">
+ <select name="shift" class="form-select" id="edit-shift" ><option value="" selected="selected">ALL</option><option value="CREWING">CREWING</option><option value="NORMAL">NORMAL</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Line group"><strong style="display: block; padding: 0px; margin: 0px;">Line Group: </strong> <div class="form-item" id="edit-linegroup-wrapper">
+ <select name="linegroup" class="form-select" id="edit-linegroup" ><option value="" selected="selected">ALL</option><option value="AFO/DIEBANK">AFO/DIEBANK</option><option value="AFO/FTD">AFO/FTD</option><option value="BATH">BATH</option><option value="BURN-IN">BURN-IN</option><option value="CMG">CMG</option><option value="CPMA/RECG">CPMA/RECG</option><option value="DALLAS1">DALLAS1</option><option value="DALLAS2">DALLAS2</option><option value="DRIFT">DRIFT</option><option value="EDAS">EDAS</option><option value="FA">FA</option><option value="FVI">FVI</option><option value="HWCONTROL">HWCONTROL</option><option value="HW_LAB">HW_LAB</option><option value="HW_REPAIR">HW_REPAIR</option><option value="KTS/LTX/AOT">KTS/LTX/AOT</option><option value="KVD">KVD</option><option value="LASER">LASER</option><option value="LTX_MX/UFLEX">LTX_MX/UFLEX</option><option value="PCB_LAYOUT">PCB_LAYOUT</option><option value="PM_BAY">PM_BAY</option><option value="PROBE">PROBE</option><option value="PW_PLUS">PW_PLUS</option><option value="QA">QA</option><option value="RFX/ASL/TER">RFX/ASL/TER</option><option value="SHIPPING">SHIPPING</option><option value="SPARES">SPARES</option><option value="TAPE&amp;REEL">TAPE&amp;REEL</option><option value="TRAINER_COORDINATOR">TRAINER_COORDINATOR</option><option value="WST">WST</option><option value="DIE BANK">DIE BANK</option><option value="WLP DIE BANK">WLP DIE BANK</option><option value="FT">FT</option><option value="NON ATE">NON ATE</option><option value="RAW MATERIAL">RAW MATERIAL</option><option value="RECEIVING">RECEIVING</option><option value="MATERIAL CONTROL">MATERIAL CONTROL</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Remarks"><strong style="display: block; padding: 0px; margin: 0px;">Remarks: </strong> <div class="form-item" id="edit-remarks-wrapper">
+ <select name="remarks" class="form-select" id="edit-remarks" ><option value="" selected="selected">ALL</option><option value="EARLY OUT">EARLY OUT</option><option value="LATE">LATE</option><option value="ONTIME">ONTIME</option><option value="OVERBREAK">OVERBREAK</option><option value="UNAUTHORIZED TRANSACTION">UNAUTHORIZED TRANSACTION</option><option value="OPEN TRANSACTION">OPEN TRANSACTION</option><option value="NO LOGOUT">NO LOGOUT</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Job function"><strong style="display: block; padding: 0px; margin: 0px;">Job Function: </strong> <div class="form-item" id="edit-jobfunc-wrapper">
+ <select name="jobfunc" class="form-select" id="edit-jobfunc" ><option value="" selected="selected">ALL</option><option value="ACTING MH">ACTING MH</option><option value="AREA LEAD">AREA LEAD</option><option value="BAKE OPTR">BAKE OPTR</option><option value="CLERK">CLERK</option><option value="DB DISPATCH OPERATOR">DB DISPATCH OPERATOR</option><option value="DISPATCH">DISPATCH</option><option value="DISPO OPTR">DISPO OPTR</option><option value="DS FTD">DS FTD</option><option value="EE">EE</option><option value="ENGINEER">ENGINEER</option><option value="ENGINEERING">ENGINEERING</option><option value="ENGINEERING COORDINATOR">ENGINEERING COORDINATOR</option><option value="ENGINEERINGSECTIONMANAGER">ENGINEERINGSECTIONMANAGER</option><option value="ENGINEERINGSUPERVISOR">ENGINEERINGSUPERVISOR</option><option value="ENGINEERING_AIDE">ENGINEERING_AIDE</option><option value="EXPEDITER">EXPEDITER</option><option value="FA ENGINEER">FA ENGINEER</option><option value="HC CLERK">HC CLERK</option><option value="HMG">HMG</option><option value="HW CNTRL">HW CNTRL</option><option value="IGS ADMINISTRATOR">IGS ADMINISTRATOR</option><option value="INSPECTOR">INSPECTOR</option><option value="LSG TECH">LSG TECH</option><option value="LVL 1 SUPV">LVL 1 SUPV</option><option value="LVL 2 SUPV">LVL 2 SUPV</option><option value="MATERIALHANDLER">MATERIALHANDLER</option><option value="MH">MH</option><option value="MXM FTD">MXM FTD</option><option value="NOZOMI">NOZOMI</option><option value="NSB">NSB</option><option value="OJT">OJT</option><option value="OPERATOR">OPERATOR</option><option value="PLANNER">PLANNER</option><option value="PROCESS ENGINEER">PROCESS ENGINEER</option><option value="PROD">PROD</option><option value="PRODUCTION TRAINER">PRODUCTION TRAINER</option><option value="PRODUCTIONSECTIONMANAGER">PRODUCTIONSECTIONMANAGER</option><option value="RECEIVING CLERK">RECEIVING CLERK</option><option value="CONTINGENT">CONTINGENT</option><option value="SHIFT OIC">SHIFT OIC</option><option value="SUPERVISOR">SUPERVISOR</option><option value="SUPV">SUPV</option><option value="TE">TE</option><option value="TE-SYSTEM">TE-SYSTEM</option><option value="TECH">TECH</option><option value="TECHNICAL OPERATOR">TECHNICAL OPERATOR</option><option value="TECHNICIAN">TECHNICIAN</option><option value="TEST ENGINEER">TEST ENGINEER</option><option value="TEST TECHNICIAN">TEST TECHNICIAN</option><option value="TPE">TPE</option><option value="TPE SUPERVISOR">TPE SUPERVISOR</option><option value="TSS">TSS</option><option value="VISUAL INSPECTOR">VISUAL INSPECTOR</option><option value="WS TRAINER">WS TRAINER</option><option value="REGULAR">REGULAR</option></select>
+</div>
+</div></td></tr><tr class="row-2-wrapper"><td><div class="container-inline" title="KMPH Group"><strong style="display: block; padding: 0px; margin: 0px;">KMPH Group: </strong> <div class="form-item" id="edit-kmphgroup-wrapper">
+ <select name="kmphgroup" class="form-select" id="edit-kmphgroup" ><option value="" selected="selected">ALL</option><option value="NONATE-BURNIN">NONATE-BURNIN</option><option value="FT-NONSOT">FT-NONSOT</option><option value="FVI">FVI</option><option value="DISPATCH">DISPATCH</option><option value="TAPE AND REEL	">TAPE AND REEL	</option><option value="MPEE">MPEE</option><option value="WS-STD	">WS-STD	</option><option value="SPARES">SPARES</option><option value="HW CONTROL">HW CONTROL</option><option value="SUP">SUP</option><option value="DIEBANK">DIEBANK</option><option value="NONATE-DRIFT">NONATE-DRIFT</option><option value="NONATE-AIRCAL/BATH	">NONATE-AIRCAL/BATH	</option><option value="SHIPPING">SHIPPING</option><option value="FT">FT</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Group"><strong style="display: block; padding: 0px; margin: 0px;">Group: </strong> <div class="form-item" id="edit-lgroup-wrapper">
+ <select name="lgroup" class="form-select" id="edit-lgroup" ><option value="" selected="selected">ALL</option><option value="OPERATIONS">OPERATIONS</option><option value="MPEE">MPEE</option><option value="TSE">TSE</option><option value="TPE">TPE</option><option value="QA">QA</option><option value="WLP/Module">WLP/Module</option></select>
+</div>
+</div></td><td><div class="container-inline" title="Search start date"><strong style="display: block; padding: 0px; margin: 0px;">Start Date: </strong> <div class="form-item" id="edit-frdate-wrapper">
+ <input type="text" maxlength="128" name="frdate" id="edit-frdate" size="15" value="2026-07-27" class="form-text" />
+</div>
+</div></td><td><div class="container-inline" title="Search end date"><strong style="display: block; padding: 0px; margin: 0px;">End Date: </strong> <div class="form-item" id="edit-todate-wrapper">
+ <input type="text" maxlength="128" name="todate" id="edit-todate" size="15" value="2026-07-27" class="form-text" />
+</div>
+</div></td></tr><tr class="row-3-wrapper"><td colspan="5"><div class="container-inline"><input type="submit" name="op" id="edit-btnsearch" value="Search"  class="form-submit" />
+<input type="submit" name="op" id="edit-btnreset" value="Reset"  class="form-submit" />
+</div></div></td></tr><input type="hidden" name="form_build_id" id="form-3a26265649a1da99fc9a5dd662668662" value="form-3a26265649a1da99fc9a5dd662668662"  />
+<input type="hidden" name="form_token" id="edit-chrotrack-search-logs-form-form-token" value="6a1249ab83367c8378b1015e14fb58e2"  />
+<input type="hidden" name="form_id" id="edit-chrotrack-search-logs-form" value="chrotrack_search_logs_form"  />
+</table>
+</div></form>
+</div><div class="chrotrack result-wrapper"><div class="exports">&nbsp;&raquo;&nbsp;<a href="/chrono/?q=chrotrack/search/logs/xls&amp;idnum=2012370&amp;frdate=2026-07-27&amp;todate=2026-07-27" target="_blank">Export to excel</a></div><table class="pure-table pure-table-bordered  sticky-enabled">
+ <thead><tr><th>#</th><th>ID Number</th><th>Last Name</th><th>First Name</th><th>Trans Type</th><th>Trans Date</th><th>Log IN</th><th>Log OUT</th><th>Total Minutes</th><th>Shift Code</th><th>KMPH Group</th><th>Line Group</th><th>Group</th><th>Job Function</th><th>Remarks IN</th><th>Remarks OUT</th><th>Time Limit</th><th>IP Address</th> </tr></thead>
+<tbody>
+ <tr class="odd"><td>1</td><td>2012370</td><td>TIMOSA</td><td>ROCHELLE</td><td>BREAKTIME MEAL</td><td>2026-07-27</td><td>07/27 11:15am</td><td>07/27 10:17am</td><td>58.17</td><td>CREWING</td><td></td><td>MICROFLEX</td><td>TPE</td><td>TECHNICIAN</td><td>OVERBREAK</td><td></td><td>45</td><td>CAV-TRNTL-D29</td> </tr>
+ <tr class="even"><td>2</td><td>2012370</td><td>TIMOSA</td><td>ROCHELLE</td><td>REST ROOM</td><td>2026-07-27</td><td>07/27 12:21pm</td><td>07/27 12:12pm</td><td>9.15</td><td>CREWING</td><td></td><td>MICROFLEX</td><td>TPE</td><td>TECHNICIAN</td><td></td><td></td><td></td><td>CAV-TRNTL-D28</td> </tr>
+ <tr class="odd"><td>3</td><td>2012370</td><td>TIMOSA</td><td>ROCHELLE</td><td>WORK RELATED</td><td>2026-07-27</td><td>07/27 1:35pm</td><td>07/27 1:00pm</td><td>34.50</td><td>CREWING</td><td></td><td>MICROFLEX</td><td>TPE</td><td>TECHNICIAN</td><td></td><td></td><td></td><td>CAV-TRNTL-D29</td> </tr>
+ <tr class="even"><td>4</td><td>2012370</td><td>TIMOSA</td><td>ROCHELLE</td><td>TIME INOUT</td><td>2026-07-27</td><td>07/27 8:52am</td><td>-</td><td>-</td><td>CREWING</td><td></td><td>MICROFLEX</td><td>TPE</td><td>TECHNICIAN</td><td></td><td></td><td>0</td><td></td> </tr>
+</tbody>
+</table>
+</div></div><!-- /table-wrapper -->                        <div class="lower-content-wrapper">
+                                                    </div>
+                                            </div>
+                </td>
+                            </tr>
+        </table>
+
+        <div id="footer"  class="rounded">
+                                </div>
+        <script type="text/javascript" src="/chrono/sites/all/modules/custom/chrotrack/js/custom.js?6"></script>
+    </body>
+</html>
