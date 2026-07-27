@@ -6,6 +6,7 @@ const { chromium } = require('playwright');
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
+const isRender = Boolean(process.env.RENDER);
 
 const COOKIE_FILE = path.join(__dirname, '.chrono_cookie');
 const PLAYWRIGHT_PROFILE_DIR = path.join(__dirname, '.chrono_profile');
@@ -72,14 +73,16 @@ app.get('/auth-status', (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless: false,
-      viewport: null,
-      args: ['--start-maximized'],
-    });
+    const headless = isRender ? true : false;
+    const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, getPlaywrightLaunchOptions({ headless }));
     const page = await context.newPage();
     await page.goto(CHRONO_SEARCH_URL, { waitUntil: 'networkidle' });
-    res.json({ started: true, message: 'Browser opened. Please log in and close the browser when finished.' });
+    res.json({
+      started: true,
+      message: headless
+        ? 'Browser launched in headless mode for Render. Use CHRONO_COOKIE for unattended runs.'
+        : 'Browser opened. Please log in and close the browser when finished.',
+    });
   } catch (err) {
     res.status(500).json({ error: String(err) });
   }
@@ -144,13 +147,23 @@ function hasPersistentProfile() {
   return fs.existsSync(PLAYWRIGHT_PROFILE_DIR);
 }
 
+function getPlaywrightLaunchOptions({ headless = true } = {}) {
+  return {
+    headless,
+    viewport: null,
+    args: [
+      '--start-maximized',
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+    ],
+  };
+}
+
 async function createChronoContext({ headless = true } = {}) {
   if (hasPersistentProfile()) {
-    const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless,
-      viewport: null,
-      args: ['--start-maximized'],
-    });
+    const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, getPlaywrightLaunchOptions({ headless }));
     return { context, source: 'profile' };
   }
 
@@ -171,7 +184,7 @@ async function createChronoContext({ headless = true } = {}) {
     };
   });
 
-  const browser = await chromium.launch({ headless });
+  const browser = await chromium.launch({ headless, args: getPlaywrightLaunchOptions({ headless }).args });
   const context = await browser.newContext();
   await context.addCookies(cookies);
   return { browser, context, source: 'cookie' };
