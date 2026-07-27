@@ -5,7 +5,8 @@
   "description": "Attendance checker app for ChronoTrack",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "node -e \"const { execSync } = require('child_process'); const isLinux = process.platform === 'linux'; const command = isLinux ? 'node node_modules/playwright/cli.js install --with-deps chromium' : 'node node_modules/playwright/cli.js install chromium'; execSync(command, { stdio: 'inherit' });\""
   },
   "engines": {
     "node": ">=20"

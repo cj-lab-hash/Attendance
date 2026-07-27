@@ -3,7 +3,7 @@ services:
     name: chronotrack-checker
     env: node
     plan: free
-    buildCommand: npm install && npx playwright install --with-deps
+    buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: NODE_ENV
