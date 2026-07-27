@@ -26,6 +26,14 @@ function isHeadlessRenderEnvironment() {
   return process.env.RENDER === 'true' || process.env.PLAYWRIGHT_HEADLESS === 'true' || process.env.CI === 'true';
 }
 
+function formatPlaywrightError(err) {
+  const raw = String(err || '');
+  if (raw.includes('Executable doesn\'t exist') || raw.includes('Playwright was just installed or updated')) {
+    return 'Playwright browser binary is missing. Run `npm install` and `npx playwright install --with-deps chromium`, then restart the app.';
+  }
+  return raw;
+}
+
 function loadCookieString() {
   if (fs.existsSync(COOKIE_FILE)) {
     return fs.readFileSync(COOKIE_FILE, 'utf8').trim();
@@ -104,7 +112,7 @@ app.post('/login', async (req, res) => {
     await page.goto(CHRONO_SEARCH_URL, { waitUntil: 'networkidle' });
     res.json({ started: true, message: 'Browser opened. Please log in and close the browser when finished.' });
   } catch (err) {
-    res.status(500).json({ error: String(err) });
+    res.status(500).json({ error: formatPlaywrightError(err) });
   }
 });
 

@@ -5,14 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npx playwright install --with-deps chromium"
+    "build": "npx playwright install --with-deps chromium",
+    "postinstall": "npx playwright install --with-deps chromium"
   },
   "dependencies": {
     "express": "^4.18.2",
     "node-fetch": "^2.6.7",
-    "cheerio": "^1.0.0-rc.12"
-  },
-  "devDependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "playwright": "^1.55.0"
-  }
+  },
+  "devDependencies": {}
 }
