@@ -1,19 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-// Playwright is optional in production builds. Lazily require it so deploys
-// that don't install devDependencies (e.g. Render) won't fail at startup.
-let _chromium_cached;
-function getChromium() {
-  if (_chromium_cached !== undefined) return _chromium_cached;
-  try {
-    const pw = require('playwright');
-    _chromium_cached = pw.chromium;
-  } catch (e) {
-    _chromium_cached = null;
-  }
-  return _chromium_cached;
-}
+const { chromium } = require('playwright');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,18 +9,6 @@ app.use(express.json());
 
 const COOKIE_FILE = path.join(__dirname, '.chrono_cookie');
 const PLAYWRIGHT_PROFILE_DIR = path.join(__dirname, '.chrono_profile');
-
-function isHeadlessRenderEnvironment() {
-  return process.env.RENDER === 'true' || process.env.PLAYWRIGHT_HEADLESS === 'true' || process.env.CI === 'true';
-}
-
-function formatPlaywrightError(err) {
-  const raw = String(err || '');
-  if (raw.includes('Executable doesn\'t exist') || raw.includes('Playwright was just installed or updated')) {
-    return 'Playwright browser binary is missing. Run `npm install` and `npx playwright install --with-deps chromium`, then restart the app.';
-  }
-  return raw;
-}
 
 function loadCookieString() {
   if (fs.existsSync(COOKIE_FILE)) {
@@ -96,15 +72,8 @@ app.get('/auth-status', (req, res) => {
 
 app.post('/login', async (req, res) => {
   try {
-    const chromium = getChromium();
-    if (!chromium) {
-      return res.status(503).json({
-        error: 'Playwright is not installed. Run `npm run build` locally to install browsers, or install Playwright to use the login flow.'
-      });
-    }
-
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless: isHeadlessRenderEnvironment(),
+      headless: false,
       viewport: null,
       args: ['--start-maximized'],
     });
@@ -112,7 +81,7 @@ app.post('/login', async (req, res) => {
     await page.goto(CHRONO_SEARCH_URL, { waitUntil: 'networkidle' });
     res.json({ started: true, message: 'Browser opened. Please log in and close the browser when finished.' });
   } catch (err) {
-    res.status(500).json({ error: formatPlaywrightError(err) });
+    res.status(500).json({ error: String(err) });
   }
 });
 
@@ -176,14 +145,9 @@ function hasPersistentProfile() {
 }
 
 async function createChronoContext({ headless = true } = {}) {
-  const chromium = getChromium();
-
   if (hasPersistentProfile()) {
-    if (!chromium) {
-      return { context: null, source: null };
-    }
     const context = await chromium.launchPersistentContext(PLAYWRIGHT_PROFILE_DIR, {
-      headless: isHeadlessRenderEnvironment() ? true : headless,
+      headless,
       viewport: null,
       args: ['--start-maximized'],
     });
@@ -206,13 +170,6 @@ async function createChronoContext({ headless = true } = {}) {
       secure: false,
     };
   });
-
-  if (!chromium) {
-    // Playwright not available in this environment (likely a production build
-    // where devDependencies aren't installed). Return null context so caller
-    // can fall back or surface an informative message.
-    return { browser: null, context: null, source: null };
-  }
 
   const browser = await chromium.launch({ headless });
   const context = await browser.newContext();

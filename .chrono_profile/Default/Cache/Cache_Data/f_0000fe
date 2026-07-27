@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crew Nightshift Checker</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1 id="pageTitle">Crew 6/7 07/23/2026 NIGHTSHIFT</h1>
+  <table class="roster" id="roster">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>LINE ASSIGNMENT</th>
+        <th>BREAKTIME</th>
+        <th>LOGGED IN</th>
+      </tr>
+    </thead>
+    <tbody id="rosterBody"></tbody>
+  </table>
+
+  <div class="controls">
+    <label for="crewSelect">Crew:</label>
+    <select id="crewSelect">
+      <option value="crew 1-2">Crew 1-2</option>
+      <option value="crew 2-3">Crew 2-3</option>
+      <option value="crew 3-4">Crew 3-4</option>
+      <option value="crew 4-5">Crew 4-5</option>
+      <option value="crew 5-6">Crew 5-6</option>
+      <option value="crew 6-7">Crew 6-7</option>
+      <option value="crew 7-1">Crew 7-1</option>
+    </select>
+
+    <label for="shiftSelect">Shift:</label>
+    <select id="shiftSelect">
+      <option value="DAYSHIFT">DAYSHIFT</option>
+      <option value="NIGHTSHIFT">NIGHTSHIFT</option>
+    </select>
+
+    <button id="checkAll">Check All</button>
+    <button id="addRow">Add Row</button>
+    <button id="loginButton">Login to ChronoTrack</button>
+    <div id="authStatus" class="auth-status">Checking auth status...</div>
+    <small>Note: Use Login if this is the first run or if authentication expires.</small>
+  </div>
+
+  <script>
+    const crewMembers = {
+      'crew 1': [
+        // { id: '902497', name: 'Fortunato',lineAssign:'OIC', breakTime:'3rd' },
+        { id: '133421', name: 'John Derick', lineAssign:'OIC', breakTime:'3rd' },
+        { id: '2014423', name: 'Michael M.', lineAssign:'FLEX', breakTime:'1st' },
+        { id: '2013007', name: 'Gian', lineAssign:'ENGG ACTIVITY', breakTime:'1st' },
+        { id: '2015678', name: 'Ramil', lineAssign:'FLEX', breakTime:'1st' },
+        { id: '143602', name: 'Jerrick', lineAssign:'FLEX/ACT', breakTime:'2nd' },
+      ],
+      'crew 2': [
+        { id: '141434', name: 'Lloyd Bryan',lineAssign:'OIC', breakTime:'3rd' },
+        { id: '140980', name: 'Glocell', lineAssign:'FLEX/NI', breakTime:'2nd' },
+        { id: '2015730', name: 'Ashton', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '145105', name: 'Dios', lineAssign:'FLEX', breakTime:'1st' },
+        { id: '2013038', name: 'Candy', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '130955', name: 'Michael B',lineAssign:'ACT', breakTime:'3rd' },
+      ],
+      'crew 3': [
+        // { id: '131485', name: 'Anthony', lineAssign:'SUPV', breakTime:'1st' },
+        { id: '900779', name: 'Myra', lineAssign:'OIC', breakTime:' 3rd' },
+        { id: '131485', name: 'Eugene',lineAssign:'OIC', breakTime:'1st' },
+        { id: '2002777', name: 'Ji Ann', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '2013258', name: 'Joefer', lineAssign:'FLEX', breakTime:'3rd' },
+        { id: '2016871', name: 'Claire', lineAssign:'ENGG ACTIVITY', breakTime:'1st' },
+
+      ],
+      'crew 4': [
+        { id: '131328', name: 'Delpino', lineAssign:'OIC', breakTime:'1st' },
+        { id: '2014438', name: 'Justin', lineAssign:'FLEX', breakTime:'3rd' },
+        { id: '2010881', name: 'Krisanta', lineAssign:'Pre-Setup/FLEX', breakTime:'2nd' },
+        { id: '2002077', name: 'AJ', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '2014560', name: 'Jhim', lineAssign:'ENGG ACTIVITY', breakTime:'1st' },
+        { id: '902634', name: 'Joel', lineAssign:'ACT', breakTime:'1st' },
+      ],
+      'crew 5': [
+        { id: '901632', name: 'Abbah', lineAssign:'OIC', breakTime:'1st' },
+        { id: '2014425', name: 'Blessie', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '2007797', name: 'Paul', lineAssign:'FLEX', breakTime:'2nd' },
+        { id: '2016878', name: 'Dannah', lineAssign:'Pre-Setup/FLEX', breakTime:'1st' },
+      ],
+      'crew 6': [
+        { id: '127555', name: 'Patrick', lineAssign: 'OIC', breakTime: '3rd' },
+        { id: '141512', name: 'Ivan', lineAssign: 'FLEX', breakTime: '3rd' },
+        { id: '2013018', name: 'Noelyn', altNames: ['Noie'], lineAssign: 'FLEX', breakTime: '2nd' },
+        { id: '2013253', name: 'Christian', lineAssign: 'FLEX/PRESETUP', breakTime: '2nd' },
+        { id: '131978', name: 'CJ', lineAssign: 'ACT', breakTime: '3rd' },
+        { id: '2015661', name: 'Kurt', lineAssign: 'ACT', breakTime: '2nd' },
+      ],
+      'crew 7': [
+        { id: '135213', name: 'Bryan', lineAssign: 'OIC', breakTime: '3rd' },
+        { id: '2006505', name: 'Abdul', altNames: ['Javier'], lineAssign: 'FLEX', breakTime: '2nd' },
+        { id: '2007796', name: 'Alexander', lineAssign: 'FLEX', breakTime: '2nd' },
+        { id: '2002133', name: 'Geronimo', lineAssign: 'FLEX', breakTime: '1st' },
+        { id: '2012370', name: 'Rochelle', lineAssign: 'FLEX', breakTime: '1st' },
+      ],
+    };
+
+    function formatTitle() {
+      const crew = document.getElementById('crewSelect').value.toUpperCase();
+      const shift = document.getElementById('shiftSelect').value;
+      const date = new Date();
+      const today = `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}/${String(date.getFullYear()).slice(-2)}`;
+      document.getElementById('pageTitle').textContent = `${crew} ${today} ${shift}`;
+    }
+
+    function getCrewMembers(crew) {
+      if (crewMembers[crew]) {
+        return crewMembers[crew];
+      }
+
+      const parts = crew.replace(/crew\s*/i, '').split('-').map(p => p.trim());
+      if (parts.length !== 2) return [];
+
+      const [first, second] = parts;
+      const firstKey = `crew ${first}`;
+      const secondKey = `crew ${second}`;
+      const firstMembers = crewMembers[firstKey] || [];
+      const secondMembers = crewMembers[secondKey] || [];
+
+      const combined = [...firstMembers, ...secondMembers];
+      const seen = new Set();
+      return combined.filter(member => {
+        const key = `${member.id}-${member.name}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    const rosterState = {};
+    const customRows = [];
+
+    function normalizeName(name) {
+      return String(name || '').trim().toLowerCase();
+    }
+
+    function getIdForName(name) {
+      const normalized = normalizeName(name);
+      if (!normalized) return null;
+
+      for (const crew of Object.values(crewMembers)) {
+        for (const member of crew) {
+          if (normalizeName(member.name) === normalized) {
+            return member.id;
+          }
+          if (Array.isArray(member.altNames)) {
+            for (const alias of member.altNames) {
+              if (normalizeName(alias) === normalized) {
+                return member.id;
+              }
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    function addCustomRow() {
+      customRows.push({ name: '', lineAssign: '', breakTime: '' });
+      renderRoster();
+    }
+
+    function getRowState(id, member) {
+      const saved = rosterState[id] || {};
+      return {
+        lineAssign: saved.lineAssign ?? member.lineAssign ?? '',
+        breakTime: saved.breakTime ?? member.breakTime ?? '',
+      };
+    }
+
+    function updateRowState(id, field, value) {
+      if (!rosterState[id]) rosterState[id] = {};
+      rosterState[id][field] = value;
+    }
+
+    function renderRoster() {
+      const crew = document.getElementById('crewSelect').value;
+      const members = getCrewMembers(crew);
+      const tbody = document.getElementById('rosterBody');
+
+      if (!members.length && !customRows.length) {
+        tbody.innerHTML = `<tr><td colspan="5">No roster defined for ${crew}</td></tr>`;
+        return;
+      }
+
+      const rowHtml = members.map(member => {
+        const state = getRowState(member.id, member);
+        return `
+          <tr data-id="${member.id}" data-name="${member.name}">
+            <td>${member.name}</td>
+            <td><input type="text" class="lineAssign" value="${state.lineAssign}" placeholder="Enter line" /></td>
+            <td><input type="text" class="breakTime" value="${state.breakTime}" placeholder="Enter break" /></td>
+            <td class="status">—</td>
+          </tr>
+        `;
+      });
+
+      const customHtml = customRows.map((member, index) => {
+        return `
+          <tr data-custom="${index}">
+            <td><input type="text" class="customName" value="${member.name}" placeholder="Name" /></td>
+            <td><input type="text" class="lineAssign" value="${member.lineAssign}" placeholder="Enter line" /></td>
+            <td><input type="text" class="breakTime" value="${member.breakTime}" placeholder="Enter break" /></td>
+            <td class="status">—</td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = [...rowHtml, ...customHtml].join('');
+
+      tbody.querySelectorAll('tr').forEach(row => {
+        const customIndex = row.dataset.custom;
+        const id = row.dataset.id;
+        const nameInput = row.querySelector('.customName');
+        const lineInput = row.querySelector('.lineAssign');
+        const breakInput = row.querySelector('.breakTime');
+
+        if (nameInput && typeof customIndex !== 'undefined') {
+          nameInput.addEventListener('input', () => {
+            customRows[customIndex].name = nameInput.value;
+          });
+        }
+        if (lineInput) {
+          const targetId = id || row.dataset.id || '';
+          lineInput.addEventListener('input', () => updateRowState(targetId, 'lineAssign', lineInput.value));
+        }
+        if (breakInput) {
+          const targetId = id || row.dataset.id || '';
+          breakInput.addEventListener('input', () => updateRowState(targetId, 'breakTime', breakInput.value));
+        }
+      });
+    }
+
+    async function checkId(id) {
+      const res = await fetch(`/debug-check?id=${encodeURIComponent(id)}`);
+      return res.json();
+    }
+
+    async function findIdByName(name) {
+      const localId = getIdForName(name);
+      if (localId) {
+        return { id: localId, note: 'local alias match' };
+      }
+      const res = await fetch(`/find-id?name=${encodeURIComponent(name)}`);
+      return res.json();
+    }
+
+    function determineLoggedStatus(matchedRows, shiftType) {
+      if (!matchedRows || !matchedRows.length) {
+        return { status: 'NO DATA', reason: 'No matching rows' };
+      }
+
+      const timeInOutRows = matchedRows.filter(r => ((r.row['Trans Type'] || '').trim().toUpperCase() === 'TIME INOUT'));
+      if (!timeInOutRows.length) {
+        return { status: 'NO DATA', reason: 'No TIME INOUT rows found' };
+      }
+
+      const bottomRow = timeInOutRows[timeInOutRows.length - 1].row;
+      const logIn = (bottomRow['Log IN'] || '').trim();
+      const logOut = (bottomRow['Log OUT'] || '').trim();
+
+      if (shiftType === 'DAYSHIFT') {
+        if (logIn && (!logOut || logOut === '-')) {
+          return { status: 'YES', reason: 'Day shift bottom TIME INOUT row has Log IN and no Log OUT' };
+        }
+        if (logIn && logOut && logOut !== '-') {
+          return { status: 'NO', reason: 'Day shift bottom TIME INOUT row has both Log IN and Log OUT' };
+        }
+        return { status: 'UNKNOWN', reason: 'Day shift bottom TIME INOUT row missing clear Log IN/OUT values' };
+      }
+
+      const hasOpenNight = timeInOutRows.some(r => {
+        const rowLogIn = (r.row['Log IN'] || '').trim();
+        const rowLogOut = (r.row['Log OUT'] || '').trim();
+        return rowLogIn && (!rowLogOut || rowLogOut === '-');
+      });
+      if (hasOpenNight) {
+        return { status: 'YES', reason: 'Night shift has a TIME INOUT row with Log IN and no Log OUT' };
+      }
+      return { status: 'NO', reason: 'Night shift does not have any open TIME INOUT row' };
+    }
+
+    async function refreshAuthStatus() {
+      const statusEl = document.getElementById('authStatus');
+      try {
+        const res = await fetch('/auth-status');
+        const json = await res.json();
+        const source = json.hasProfile ? 'profile' : json.hasCookie ? 'cookie' : 'none';
+        statusEl.textContent = `Auth source: ${source} | profile=${json.hasProfile} | cookie=${json.hasCookie}`;
+        return json;
+      } catch (err) {
+        statusEl.textContent = 'Auth status unavailable';
+        return null;
+      }
+    }
+
+    async function waitForProfileReady(timeout = 30000, interval = 1000) {
+      const statusEl = document.getElementById('authStatus');
+      const deadline = Date.now() + timeout;
+
+      while (Date.now() < deadline) {
+        const json = await refreshAuthStatus();
+        if (json && json.hasProfile) {
+          return true;
+        }
+        statusEl.textContent = 'Waiting for login to complete...';
+        await new Promise(resolve => setTimeout(resolve, interval));
+      }
+
+      return false;
+    }
+
+    async function startLogin() {
+      const statusEl = document.getElementById('authStatus');
+      statusEl.textContent = 'Opening browser for login...';
+      const res = await fetch('/login', { method: 'POST' });
+      const json = await res.json();
+      if (!json.started) {
+        statusEl.textContent = `Login failed: ${json.error || 'unknown'}`;
+        return;
+      }
+
+      statusEl.textContent = 'Browser opened. Log in there, then wait for auth to refresh automatically.';
+      const ready = await waitForProfileReady(60000, 1500);
+      if (ready) {
+        statusEl.textContent = 'Login complete. Auth profile is ready.';
+      } else {
+        statusEl.textContent = 'Login not detected yet. Refresh auth status after closing the browser.';
+      }
+    }
+
+    async function runChecks() {
+      const crew = document.getElementById('crewSelect').value;
+      const shiftType = document.getElementById('shiftSelect').value;
+      const rows = document.querySelectorAll('#roster tbody tr');
+
+      for (const row of rows) {
+        const customIndex = row.dataset.custom;
+        const customNameInput = row.querySelector('.customName');
+        const statusCell = row.querySelector('.status');
+        statusCell.classList.remove('ok', 'warn');
+
+        let id = row.dataset.id || '';
+        const name = customNameInput ? customNameInput.value.trim() : row.dataset.name;
+
+        if (customIndex !== undefined && customNameInput) {
+          if (!name) {
+            statusCell.textContent = 'no-name';
+            statusCell.classList.add('warn');
+            continue;
+          }
+          if (!id) {
+            const found = await findIdByName(name);
+            if (!found || !found.id) {
+              statusCell.textContent = 'id not found';
+              statusCell.classList.add('warn');
+              statusCell.title = found && found.note ? found.note : `Could not find ID for ${name}`;
+              continue;
+            }
+            id = found.id;
+            row.dataset.id = id;
+          }
+        }
+
+        if (!id) {
+          statusCell.textContent = 'no-id';
+          statusCell.classList.add('warn');
+          continue;
+        }
+
+        statusCell.textContent = 'checking...';
+
+        try {
+          const result = await checkId(id);
+
+          if (!result.cookieSet) {
+            statusCell.textContent = 'no-cookie';
+            statusCell.classList.add('warn');
+            continue;
+          }
+
+          if (!result.loginSuccess) {
+            statusCell.textContent = 'login-failed';
+            statusCell.classList.add('warn');
+            continue;
+          }
+
+          const status = determineLoggedStatus(result.matchedRows, shiftType);
+          statusCell.textContent = status.status;
+          statusCell.title = `${status.reason} | crew=${crew} | shift=${shiftType}`;
+
+          if (status.status === 'YES') {
+            statusCell.classList.add('ok');
+          } else {
+            statusCell.classList.add('warn');
+          }
+        } catch (e) {
+          statusCell.textContent = 'err';
+          statusCell.classList.add('warn');
+        }
+      }
+    }
+
+    document.getElementById('crewSelect').addEventListener('change', () => {
+      formatTitle();
+      renderRoster();
+    });
+    document.getElementById('addRow').addEventListener('click', addCustomRow);
+    document.getElementById('loginButton').addEventListener('click', startLogin);
+    formatTitle();
+    renderRoster();
+    refreshAuthStatus();
+    document.getElementById('checkAll').addEventListener('click', runChecks);
+  </script>
+</body>
+</html>
